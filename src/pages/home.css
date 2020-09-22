@@ -1,0 +1,156 @@
+.index-heading {
+  height: 2rem;
+  width: 100%;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+@keyframes rotate {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+.heading-img {
+  position: relative;
+  top: 4rem;
+  width: 150px;
+  height: 150px;
+  z-index: 1;
+  animation: rotate 10s infinite linear;
+}
+.halls-container {
+  background-color: lightgrey;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.court {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  transition: all 0.2s;
+  width: 90%;
+  margin: auto;
+}
+.hall {
+  flex: 1;
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+.hall h1 {
+  font-size: 3rem;
+  font-weight: bolder;
+}
+.specialty {
+  color: red;
+  font-size: 3rem;
+  margin: 0.5rem 0;
+  font-weight: bolder;
+}
+.roll-number {
+  font-size: 18rem;
+  font-weight: bolder;
+  color: red;
+}
+.wataniya-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0.5rem 1rem;
+  width: 300px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.wataniya-box img {
+  animation: rotate 10s infinite linear;
+}
+.single-hall {
+  padding: 7rem;
+}
+.counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 0;
+  position: relative;
+}
+.counter button:not(:disabled) {
+  cursor: pointer;
+}
+.rollNumber-counter {
+  border: 5px solid black;
+  margin: 2rem 0;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 150px;
+  font-weight: bold;
+}
+.rollNumber-counter p {
+  padding: 0.25em 0.4em;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  margin: 20px;
+  vertical-align: baseline;
+}
+.counter-button {
+  color: white;
+  border: 0;
+  outline: 0;
+  transition: all 0.2s;
+}
+.counter-button:hover {
+  opacity: 0.8;
+}
+.up-button {
+  background-color: #28a745;
+}
+.down-button {
+  background-color: #bd2130;
+}
+.down-button:disabled {
+  background-color: #e2979e;
+}
+.reset-button {
+  background-color: #ffc107;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.reset-button:disabled {
+  background-color: #d39e00;
+}
+@media (max-width: 768px) {
+  .court {
+    padding: 7rem 0;
+  }
+  .hall {
+    flex-basis: 100%;
+  }
+  .specialty {
+    font-size: 2rem;
+  }
+  .wataniya-box {
+    text-align: center;
+  }
+}

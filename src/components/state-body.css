@@ -1,0 +1,97 @@
+.state-container {
+  margin-right: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.state-header {
+  height: 70px;
+  background-color: white;
+  box-shadow: 2px -5px 12px 1px black;
+}
+
+.state-body {
+  width: 95%;
+  margin-top: 1rem;
+  border-radius: 5px;
+  background-color: #f3f0f0;
+  padding: 10px;
+  box-shadow: 0px 0px 6px 0px #9c9c9c;
+  transition: all 0.2s;
+}
+.news-body {
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+.state-body-section {
+  margin: 10px 5px;
+  display: flex;
+  align-items: center;
+}
+.state-body-section h3 {
+  margin: 20px;
+}
+.daysContainer h3 {
+  width: 10rem;
+}
+.new-news {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.new-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-label {
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #929696;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin: 0 2rem;
+}
+.image-label:hover {
+  opacity: 0.7;
+}
+
+.new-image input[type="file"] {
+  display: none;
+}
+.small-images {
+  display: flex;
+}
+.small-image {
+  position: relative;
+}
+.small-image span {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: -15px;
+  cursor: pointer;
+  color: red;
+  border-radius: 50%;
+  text-align: center;
+}
+.small-image img {
+  height: 100px;
+  width: 100px;
+  margin: 0 0.5rem;
+}
+.images-container {
+  text-align: center;
+}
+.user-pic {
+  height: 75px;
+  width: 75px;
+  border-radius: 10px;
+  margin-left: 1rem;
+}

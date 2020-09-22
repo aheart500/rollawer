@@ -1,13 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo&display=swap");
 body {
+  box-sizing: border-box;
+  font-family: "Cairo", sans-serif !important;
+}
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loader-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border-top: 2px dotted black;
+  animation: rotate 500ms linear infinite;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@keyframes walk {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.news-bar-container {
+  background-color: red;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.whole-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  height: 4rem;
+}
+.clock {
+  padding: 0 2rem;
+  background-color: red;
+  position: relative;
+  z-index: 2;
+  line-height: 4rem;
+  height: 100%;
+  text-align: center;
+  width: 15rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.news-bar {
+  transform: translateX(-100%);
+  display: flex;
+  position: absolute;
+  color: white;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  width: max-content;
+  animation: walk linear infinite;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.single-news {
+  margin: 0 1rem;
+  display: flex;
+}
+.admin-links {
+  margin-right: 5rem;
+  display: inline-block;
+  border: 1px solid;
+  padding: 0 1rem;
+}
+.admin-links:hover {
+  opacity: 0.5;
+}
+.ltr {
+  direction: ltr !important;
 }
