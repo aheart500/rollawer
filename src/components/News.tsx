@@ -2,12 +2,17 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Button, TextField } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import React, { useEffect, useState } from "react";
-import { ADD_NEWS, REMOVE_NEWS, GET_NEWS } from "../GraphQueiries";
+import { ADD_NEWS, REMOVE_NEWS, GET_NEWS, UPDATE_NEW } from "../GraphQueiries";
 import { NewsType } from "../types";
 const useStyles = makeStyles({
   deleteButton: {
-    marginLeft: "5rem",
+    marginRight: "1rem",
+    marginTop: "1rem",
   },
+  button: {
+    marginTop: "1rem",
+  },
+
   saveButton: {
     marginLeft: "1rem",
     height: "50px",
@@ -32,6 +37,7 @@ const News = () => {
   const handleDelete = (id: number) => {
     deleteNews({ variables: { id } }).then(() => refetch());
   };
+  const [updateNews] = useMutation(UPDATE_NEW);
   const handleSaveNew = () => {
     setError(false);
     if (newNews === "") {
@@ -45,6 +51,18 @@ const News = () => {
     });
   };
 
+  const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNews(
+      news?.map((singleNews) => {
+        if (singleNews.id.toString() === e.target.name)
+          return { ...singleNews, text: e.target.value };
+        return singleNews;
+      }) as NewsType[]
+    );
+  };
+  const handleUpdate = (id: any, text: string) => {
+    updateNews({ variables: { id, text } }).then(() => refetch());
+  };
   useEffect(() => {
     if (data) setNews(data.news);
   }, [data]);
@@ -56,9 +74,25 @@ const News = () => {
           <h3>الأخبار:</h3>
           {news?.map((newsayia: NewsType) => (
             <div className="new-news" key={newsayia.id}>
-              {newsayia.text}
+              <TextField
+                onChange={handleChangeText}
+                name={"" + newsayia.id}
+                value={newsayia.text}
+                multiline={true}
+                style={{
+                  width: "100%",
+                }}
+              />
               <Button
                 className={classes.deleteButton}
+                color="primary"
+                variant="contained"
+                onClick={() => handleUpdate(newsayia.id, newsayia.text)}
+              >
+                تحديث الخبر
+              </Button>
+              <Button
+                className={classes.button}
                 color="secondary"
                 variant="contained"
                 onClick={() => handleDelete(newsayia.id)}

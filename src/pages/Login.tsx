@@ -5,6 +5,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { IS_AUTHENTICATED } from "../GraphQueiries";
 import { UserType } from "../types";
 import "./login.css";
+import { baseLink } from "../constants";
 interface AlertMessages {
   type: "error" | "success" | "warning";
   message: string;
@@ -73,7 +74,7 @@ const Login = (props: any) => {
           <Alert severity={message?.type}>{message?.message}</Alert>
         </Collapse>
 
-        <a className="login-button" href="http://localhost:3001/auth/facebook">
+        <a className="login-button" href={baseLink + "/auth/facebook"}>
           دخول
         </a>
       </div>

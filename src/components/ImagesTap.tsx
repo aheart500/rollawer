@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Button, TextField } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import { baseLink } from "../constants";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { UPLOAD_IMAGE, REMOVE_IMAGE, GET_IMAGES } from "../GraphQueiries";
@@ -129,8 +130,7 @@ const ImagesTap = () => {
                     {images
                       ?.filter((image) => image.date === date)
                       .map((image) => {
-                        const imageSrc =
-                          "http://localhost:3001/images/" + image.filename;
+                        const imageSrc = baseLink + "/images/" + image.filename;
                         return (
                           <div className="small-image" key={image.id}>
                             <span onClick={() => handleDelete(image.id)}>

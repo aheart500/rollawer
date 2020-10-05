@@ -46,7 +46,6 @@ const HallSection = ({
   updateCourt,
 }: HallProps) => {
   const classes = useStyles();
-  const [officialName, setOfficialName] = useState(hall.official || "");
   const [days, setDays] = useState({
     friday: hall.friday || "",
     saturday: hall.saturday || "",
@@ -62,14 +61,10 @@ const HallSection = ({
   const handleDayChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDays({ ...days, [e.target.name]: e.target.value });
   };
-  const handleOfficalNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setOfficialName(e.target.value);
-  };
   const [updateHall, { loading }] = useMutation(UPDATE_HALL, {
     variables: {
       id: hall.id,
       days,
-      official: officialName || "",
     },
   });
   const handleSave = () => {
@@ -86,7 +81,6 @@ const HallSection = ({
     });
   };
   useEffect(() => {
-    setOfficialName(hall.official || "");
     setDays({
       friday: hall.friday || "",
       saturday: hall.saturday || "",
@@ -119,16 +113,7 @@ const HallSection = ({
           حذف
         </Button>
       </section>
-      <section className="state-body-section daysContainer">
-        <h3>اسم المستشار</h3>
-        <TextField
-          value={officialName}
-          onChange={handleOfficalNameChange}
-          className={classes.input}
-          variant="outlined"
-          placeholder="اسم المستشار"
-        />
-      </section>
+
       {Object.entries(days).map((day, index) => {
         return (
           <section key={day[0]} className="state-body-section daysContainer">

@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import NewsBar from "../components/NewsBar";
 import WatanyiaBox from "../components/WatanyiaBox";
 import { GET_HALL, IS_AUTHENTICATED, SUBSCRIBE_HALL } from "../GraphQueiries";
-import { hallType } from "../types";
+import { hallType, SettingsAttributes } from "../types";
 
 const HallPage = (props: any) => {
   const [loading, setLoading] = useState(true);
@@ -21,7 +21,7 @@ const HallPage = (props: any) => {
       court: arr[arr.indexOf("courts") + 1].split(","),
     };
   };
-
+  let settings: SettingsAttributes = props.settings;
   useEffect(() => {
     if (props.mobile) {
       if (authentication) {
@@ -74,11 +74,18 @@ const HallPage = (props: any) => {
       <Heading />
       <div className="halls-container">
         <div className="single-hall">
-          <Hall key={hall.id} hall={hall} />;
+          <Hall
+            key={hall.id}
+            hall={hall}
+            officialNameSize={settings?.hall_officialNameSize}
+            rollNumberSize={settings?.hall_rollNumberSize}
+            specialtySize={settings?.hall_specialitySize}
+            titleSize={settings?.hall_titleSize}
+          />
         </div>
         <WatanyiaBox />
       </div>
-      <NewsBar />
+      <NewsBar time={settings.newsBarTime} />
     </>
   );
 };

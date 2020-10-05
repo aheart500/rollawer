@@ -200,6 +200,11 @@ export const ADD_NEWS = gql`
     }
   }
 `;
+export const UPDATE_NEW = gql`
+  mutation updateNews($id: ID!, $text: String!) {
+    updateNews(text: $text, id: $id)
+  }
+`;
 export const REMOVE_NEWS = gql`
   mutation removeNews($id: ID!) {
     removeNews(id: $id)
@@ -330,5 +335,50 @@ export const GET_IMAGES = gql`
 export const REMOVE_IMAGE = gql`
   mutation remove($id: ID!) {
     removeImage(id: $id)
+  }
+`;
+
+export const GET_SETTINGS = gql`
+  query {
+    settings {
+      id
+      court_rollNumberSize
+      hall_rollNumberSize
+      court_paddinTop
+      court_titleSize
+      hall_titleSize
+      court_specialitySize
+      hall_specialitySize
+      hall_officialNameSize
+      court_officailNameSize
+      newsBarTime
+    }
+  }
+`;
+export const UPDATE_SETTINGS = gql`
+  mutation updateSetting(
+    $court_rollNumberSize: Int
+    $hall_rollNumberSize: Int
+    $court_paddinTop: Int
+    $court_titleSize: Int
+    $hall_titleSize: Int
+    $court_specialitySize: Int
+    $hall_specialitySize: Int
+    $hall_officialNameSize: Int
+    $court_officailNameSize: Int
+    $newsBarTime: Int
+  ) {
+    changeSettings(
+      court_rollNumberSize: $court_rollNumberSize
+      hall_rollNumberSize: $hall_rollNumberSize
+      court_paddinTop: $court_paddinTop
+      court_titleSize: $court_titleSize
+      hall_titleSize: $hall_titleSize
+      court_specialitySize: $court_specialitySize
+      hall_specialitySize: $hall_specialitySize
+      hall_officialNameSize: $hall_officialNameSize
+      court_officailNameSize: $court_officailNameSize
+      newsBarTime: $newsBarTime
+    )
   }
 `;

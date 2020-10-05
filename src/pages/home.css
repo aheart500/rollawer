@@ -31,22 +31,27 @@
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 .court {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   padding-top: 1rem;
   transition: all 0.2s;
-  width: 90%;
+  width: 95%;
   margin: auto;
+  z-index: 2;
+  position: relative;
+  /* background-image: url("../assets/justice.jpeg"); */
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
 .hall {
-  flex: 1;
-  flex-basis: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: all 0.2s;
 }
+
 .hall h1 {
   font-size: 3rem;
   font-weight: bolder;
@@ -58,7 +63,7 @@
   font-weight: bolder;
 }
 .roll-number {
-  font-size: 18rem;
+  font-size: 12rem;
   font-weight: bolder;
   color: red;
 }
@@ -78,7 +83,15 @@
   animation: rotate 10s infinite linear;
 }
 .single-hall {
-  padding: 7rem;
+  padding: 7rem 0;
+  font-size: 2rem;
+}
+.single-hall h1,
+.single-hall .specialty {
+  font-size: 4rem;
+}
+.single-hall .roll-number {
+  font-size: 23rem;
 }
 .counter {
   display: flex;
@@ -140,12 +153,17 @@
 .reset-button:disabled {
   background-color: #d39e00;
 }
+.paddingTop {
+  padding-top: 7rem;
+}
 @media (max-width: 768px) {
   .court {
     padding: 7rem 0;
+    grid-template-columns: 1fr !important;
+    height: unset;
   }
   .hall {
-    flex-basis: 100%;
+    grid-column: unset !important;
   }
   .specialty {
     font-size: 2rem;

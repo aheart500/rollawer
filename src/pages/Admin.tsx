@@ -9,7 +9,9 @@ import { StateType } from "../types";
 import News from "../components/News";
 import Users from "../components/Users";
 import ImagesTap from "../components/ImagesTap";
-export type taps = "users" | "news" | "images";
+import SettingsTap from "../components/SettingsTap";
+
+export type taps = "users" | "news" | "images" | "settings";
 const Admin = () => {
   const [loading, setLoading] = useState(true);
   const { data, refetch } = useQuery(GET_STATES);
@@ -56,6 +58,7 @@ const Admin = () => {
         states={states || []}
       />
       <header className="state-header"></header>
+      {selectedTap === "settings" && <SettingsTap />}
       {selectedTap === "users" && <Users />}
       {selectedTap === "news" && <News />}
       {selectedTap === "images" && <ImagesTap />}

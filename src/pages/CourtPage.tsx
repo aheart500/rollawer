@@ -6,13 +6,14 @@ import Loader from "../components/Loader";
 import NewsBar from "../components/NewsBar";
 import WatanyiaBox from "../components/WatanyiaBox";
 import { GET_HALLS, IS_AUTHENTICATED, SUBSCRIBE_HALL } from "../GraphQueiries";
-import { hallType } from "../types";
+import { hallType, SettingsAttributes } from "../types";
 
 const CourtPage = (props: any) => {
   const [loading, setLoading] = useState(true);
   const { data, loading: dataLoading, subscribeToMore } = useQuery(GET_HALLS, {
     variables: { CourtId: props.match.params.id },
   });
+  let settings: SettingsAttributes = props.settings;
   const { data: authentication } = useQuery(IS_AUTHENTICATED);
   const listenForHall = useCallback(
     (hallId: number) => {
@@ -74,25 +75,51 @@ const CourtPage = (props: any) => {
   if (loading || dataLoading) {
     return <Loader />;
   }
-  if (!data || !data.courts) {
+  if (!data || !data.halls) {
     return <h1>لا توجد محكمة بهذا الرقم</h1>;
   }
+  const hallsLength = data.halls.length;
+  const nOfColumns =
+    hallsLength === 1
+      ? 1
+      : hallsLength <= 4
+      ? 2
+      : hallsLength <= 6
+      ? 3
+      : hallsLength <= 8
+      ? 4
+      : 5;
+  const lastItem =
+    nOfColumns === 2 ? 2 : nOfColumns === 3 ? 6 : nOfColumns === 4 ? 8 : 10;
 
   return (
     <>
       <Heading />
       <div className="halls-container">
         <div
-          className="court"
-          style={{ paddingTop: data.halls.length === 1 ? "7rem" : "initial" }}
+          className={hallsLength === 1 ? "court single-hall" : "court"}
+          style={{
+            gridTemplateColumns: `repeat(${nOfColumns}, 1fr)`,
+            paddingTop: settings.court_paddinTop + "px",
+          }}
         >
-          {data.halls.map((hall: hallType) => {
-            return <Hall key={hall.id} hall={hall} />;
+          {data.halls.map((hall: hallType, i: number) => {
+            return (
+              <Hall
+                last={i === hallsLength - 1 && i === lastItem}
+                key={hall.id}
+                hall={hall}
+                officialNameSize={settings.court_officailNameSize}
+                rollNumberSize={settings.court_rollNumberSize}
+                specialtySize={settings.court_specialitySize}
+                titleSize={settings.court_titleSize}
+              />
+            );
           })}
         </div>
         <WatanyiaBox />
       </div>
-      <NewsBar />
+      <NewsBar time={settings.newsBarTime} />
     </>
   );
 };

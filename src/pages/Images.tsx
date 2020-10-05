@@ -4,6 +4,7 @@ import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { GET_IMAGES } from "../GraphQueiries";
 import { ImageType } from "../types";
+import { baseLink } from "../constants";
 const weekAr = [
   "الأحد",
   "الأثنين",
@@ -25,7 +26,8 @@ const Images = ({ location: { search } }: RouteComponentProps) => {
       </h1>
       <div>
         {data?.images.map((image: ImageType) => {
-          const imageSrc = "http://localhost:3001/images/" + image.filename;
+          const imageSrc = baseLink + "/images/" + image.filename;
+
           return (
             <div className="big-image" key={image.id}>
               <a href={imageSrc} target="_blank" rel="noopener noreferrer">

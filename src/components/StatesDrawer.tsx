@@ -83,6 +83,9 @@ const StatesDrawer = React.memo(
           <ListItem button onClick={() => handleSelectTap("images")}>
             <ListItemText className={classes.listText} primary="الصور" />
           </ListItem>
+          <ListItem button onClick={() => handleSelectTap("settings")}>
+            <ListItemText className={classes.listText} primary="الضبط" />
+          </ListItem>
           <Divider />
           {states.map((state) => {
             return (

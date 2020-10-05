@@ -52,3 +52,16 @@ export interface ImageType {
   filename: string;
   date: string;
 }
+export interface SettingsAttributes {
+  id: number;
+  court_rollNumberSize: number;
+  hall_rollNumberSize: number;
+  court_paddinTop: number;
+  court_titleSize: number;
+  hall_titleSize: number;
+  court_specialitySize: number;
+  hall_specialitySize: number;
+  hall_officialNameSize: number;
+  court_officailNameSize: number;
+  newsBarTime: number;
+}

@@ -49,6 +49,8 @@ a {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  z-index: 5;
+  position: relative;
 }
 .whole-bar {
   display: flex;
@@ -62,12 +64,14 @@ a {
   background-color: red;
   position: relative;
   z-index: 2;
-  line-height: 4rem;
   height: 100%;
   text-align: center;
-  width: 15rem;
-  font-size: 1.5rem;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
 }
 .news-bar {
   transform: translateX(-100%);
